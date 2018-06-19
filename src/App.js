@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
+import RoomList from './RoomList'
 
 var config = {
    apiKey: "AIzaSyCPqBcY_zC1A65EvAVAHkMtBVccx8-ZN28",
@@ -11,13 +12,14 @@ var config = {
    storageBucket: "my-chat-ab00c.appspot.com",
    messagingSenderId: "496043857317"
  };
- firebase.initializeApp(config);
+
+ const dbApp = firebase.initializeApp(config);
 
 
 class App extends Component {
   render() {
     return (
-      <RoomList />
+      <RoomList firebase={dbApp} />
     );
   }
 }
