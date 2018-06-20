@@ -51,7 +51,8 @@ class RoomList extends Component {
             this.state.rooms.map( (room) => {
               const roomkey = room.key;
               console.log("hello " + roomkey );
-              return (<li key={roomkey} onClick={() => this.props.setActiveRoom(roomkey)}>{room.name}</li>);
+              console.log(room.name);
+              return (<li key={roomkey} onClick={() => this.props.setActiveRoom(room)}>{room.name}</li>);
 
             })
           }

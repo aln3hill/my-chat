@@ -21,15 +21,15 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      activeRoom: ''
+      activeRoom: {}
     }
     this.setActiveRoom = this.setActiveRoom.bind(this);
   }
 
-  setActiveRoom(key) {
-    alert("room is set to " + key);
+  setActiveRoom(room) {
+    console.log(room + "yes");
     this.setState({
-      activeRoom: key
+      activeRoom: room
     });
 
   }
