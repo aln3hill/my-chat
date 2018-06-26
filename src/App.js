@@ -21,24 +21,28 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      activeRoom: {}
+      activeRoom: {},
+      activeRoomID: ""
     }
     this.setActiveRoom = this.setActiveRoom.bind(this);
   }
 
   setActiveRoom(room) {
-    console.log(room + "yes");
+    console.log(room);
     this.setState({
-      activeRoom: room
+      activeRoom: room,
+      activeRoomID: room.key
     });
 
   }
 
   render() {
+    console.log("active room key: " + this.state.activeRoom.key);
+
     return (
       <div>
-      <RoomList firebase={dbApp} setActiveRoom={() => this.setActiveRoom()} />
-      <MessageList firebase={dbApp} />
+      <RoomList firebase={dbApp} setActiveRoom={this.setActiveRoom}  />
+      <MessageList firebase={dbApp} roomName={this.state.activeRoom.name} roomID={this.state.activeRoomID} />
       </div>
     );
   }
