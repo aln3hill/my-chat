@@ -19,32 +19,17 @@ class MessageList extends Component {
     else return false;
   }
 
-  //HELP NEEDED WITH THE BELOW CODE.
-  //Every single time the props changes (when clicking a new room in the application) the last snapshot is being added to the message array and rendered to the DOM.
-  // I have tried to to use an IF statement to see if the latest snapshot (stored in const message) already exists in the array with the method array.includes().
-  //However, this doesn't solve my issue. Can you see what I should do differently to not add the latest snapshot to the array every single time the props update?  
-
-  componentWillReceiveProps() {
+  componentDidMount() {
 
         let activeRoom = this.props.roomID;
         this.messagesRef.on('child_added', snapshot => {
           console.log("didMountMessenger");
         const message = snapshot.val();
         message.key = snapshot.key;
-        console.log("last message");
-        console.log(this.state.messages[this.state.messages.length-1]);
-        console.log(Object.is(message, this.state.messages[this.state.messages.length-1]));
+        this.setState({ messages: this.state.messages.concat( message ) });
 
-        if(this.state.messages.includes(message)){
-          return;
-        }
-        else {
-          this.setState({ messages: this.state.messages.concat( message ) });
-        }
 
       });
-
-      //  console.log(this.state.messages);
        }
 
 
@@ -58,7 +43,7 @@ class MessageList extends Component {
 
         {
           this.state.messages.map( (mess, index) => {
-            console.log("mess.roomId:")
+
 
             return (this.isEqual(this.props.roomID, mess.roomId) ? <div className="messageItem">
                                                                   <h3 className="username">{mess.username}</h3>

@@ -28,8 +28,6 @@ class App extends Component {
   }
 
   setActiveRoom(room) {
-    console.log("logging room here:");
-    console.log(room);
     this.setState({
       activeRoom: room,
       activeRoomID: room.key
@@ -38,7 +36,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("active room key: " + this.state.activeRoomID);
 
     return (
       <div>
