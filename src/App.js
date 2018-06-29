@@ -60,7 +60,7 @@ class App extends Component {
       <div>
       <User firebase={dbApp} auth={provider} setUser={this.setUser} user={this.state.user.displayName}/>
       <RoomList firebase={dbApp} setActiveRoom={this.setActiveRoom}  />
-      <MessageList firebase={dbApp} roomName={this.state.activeRoom.name} roomID={this.state.activeRoomID} />
+      <MessageList firebase={dbApp} roomName={this.state.activeRoom.name} roomID={this.state.activeRoomID} user={this.state.user.displayName}/>
 
       </div>
     );
